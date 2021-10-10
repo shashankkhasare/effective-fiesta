@@ -12,7 +12,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "student")
-public class Student {
+public class Student extends AbstractBaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
