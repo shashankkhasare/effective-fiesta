@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+	<changeSet id="1" author="liquibase">
+		<createTable tableName="student">
+			<column autoIncrement="true"  name="id" type="SERIAL">
+				<constraints primaryKey="true"/>
+			</column>
+			<column name="first_name" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="last_name" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+			<column name="tenant_id" type="varchar(255)">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="student_row_level_security" author="shashank" >
+		<sql>
+			ALTER TABLE student ENABLE ROW LEVEL SECURITY;
+			DROP POLICY IF EXISTS student_tenant_isolation_policy ON student;
+			CREATE POLICY student_tenant_isolation_policy ON student USING (tenant_id = current_setting('app.tenant_id')::VARCHAR);
+		</sql>
+	</changeSet>
+</databaseChangeLog>

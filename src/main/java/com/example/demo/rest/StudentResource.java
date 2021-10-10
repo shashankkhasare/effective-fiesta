@@ -34,7 +34,7 @@ public class StudentResource {
 
 	private static final String ENTITY_NAME = "student";
 
-	@Value("${app.name}")
+	@Value("${spring.application.name}")
 	private String applicationName;
 
 	@Autowired
