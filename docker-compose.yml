@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+
+  postgres:
+    image: postgres:14.0
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=springvault
+      - POSTGRES_USER=spring
+      - POSTGRES_PASSWORD=vault
+    ports:
+      - "7358:5432"
+    healthcheck:
+      test: "pg_isready"
