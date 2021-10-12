@@ -16,25 +16,12 @@ curl -X PUT -d '{ "key": "'${VAULT_KEY1}'" }' ${VAULT_ADDR}/v1/sys/unseal
 sleep 1
 
 echo
-echo "--> Vault status"
-curl ${VAULT_ADDR}/v1/sys/init
-sleep 1
-
-echo
 echo "================"
 echo "-- AppRole (login without secret-id)"
 
 echo
 echo "--> enabling the AppRole auth method ..."
 curl -X POST -i -H "X-Vault-Token: ${VAULT_ROOT_TOKEN}" -d '{"type": "approle"}' ${VAULT_ADDR}/v1/sys/auth/approle
-sleep 1
-
-echo "================"
-echo "-- KV Secrets Engine - Version 1"
-
-echo
-echo "--> enabling KV Secrets Engine ..."
-curl -X POST -i -H "X-Vault-Token: ${VAULT_ROOT_TOKEN}" -d '{"type": "kv", "description": "my KV Secrets Engine", "config": {"force_no_cache": true}}' ${VAULT_ADDR}/v1/sys/mounts/secret
 sleep 1
 
 echo "================"

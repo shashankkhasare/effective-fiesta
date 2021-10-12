@@ -9,7 +9,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.vault.core.lease.SecretLeaseContainer;
 import org.springframework.vault.core.lease.event.SecretLeaseCreatedEvent;
 
-import com.example.demo.TenantAwareDataSource;
 import com.zaxxer.hikari.HikariConfigMXBean;
 import com.zaxxer.hikari.HikariDataSource;
 import com.zaxxer.hikari.HikariPoolMXBean;

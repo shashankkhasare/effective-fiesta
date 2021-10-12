@@ -13,7 +13,6 @@ import org.springframework.vault.config.AbstractVaultConfiguration;
 
 @Configuration
 @VaultPropertySource(value = "${datasource.vault-creds-path}", propertyNamePrefix = "datasource.", renewal = Renewal.ROTATE)
-@VaultPropertySource(value = "${app.vault-kv-secret-path}", propertyNamePrefix = "secret.student-service.")
 public class VaultConfig extends AbstractVaultConfiguration {
 
 	@Override

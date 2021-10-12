@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.config;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
